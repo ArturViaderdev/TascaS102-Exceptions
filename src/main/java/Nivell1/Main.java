@@ -5,9 +5,9 @@ public class Main {
     {
         Sale sale = new Sale();
         try
-        {
+       {
             sale.calculateTotal();
-        }
+       }
         catch(Exception ex) //Excepció genèrica
         {
             System.out.println(ex.getMessage());
@@ -24,6 +24,5 @@ public class Main {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 }

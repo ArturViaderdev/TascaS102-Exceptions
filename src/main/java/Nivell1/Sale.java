@@ -18,7 +18,7 @@ public class Sale {
         return totalPrice;
     }
 
-    public void calculateTotal() throws Exception
+    public void calculateTotal()
     {
         if(list.size()==0)
         {
