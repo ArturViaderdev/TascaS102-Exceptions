@@ -6,4 +6,5 @@ Després, en aquest push, he transformat la excepció en una runtimeexception i 
 
 Les runtime exceptions o excepcions no verificades no les detecta el compilador, funcionen de forma que no cal fer el throws i si no es posa try catch s'interromp el codi i es mostra el error al terminal.
 
-##Nivell 2
+## Nivell 2 Lectura segura des de teclat
+Es demanen al usuari dades per teclat i es comprova que són correctes mitjançat excepcions standard i personalitzades.
