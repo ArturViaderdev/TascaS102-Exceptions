@@ -8,3 +8,5 @@ Les runtime exceptions o excepcions no verificades no les detecta el compilador,
 
 ## Nivell 2 Lectura segura des de teclat
 Es demanen al usuari dades per teclat i es comprova que són correctes mitjançat excepcions standard i personalitzades.
+
+## Nivell 3
