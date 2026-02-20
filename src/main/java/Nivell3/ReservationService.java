@@ -100,7 +100,7 @@ public class ReservationService {
         int cont =0;
         checkValidPosition(row,seat);
         System.out.println("Posicio vàlida");
-        Seat seatValidate = new Seat(row,seat,"");
+        Seat seatValidate = new Seat(row,seat);
         while(!sal)
         {
             if(cont<seats.size())
@@ -132,7 +132,7 @@ public class ReservationService {
         int cont = 0;
         checkValidPosition(row,seat);
         System.out.println("Posicio vàlida");
-        Seat seatValidate = new Seat(row,seat,"");
+        Seat seatValidate = new Seat(row,seat);
 
         while(!sal)
         {
