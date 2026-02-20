@@ -1,6 +1,7 @@
 package Nivell3;
 
 import Nivell3.Exceptions.EmptyNumberException;
+import Nivell3.Exceptions.NumbersInNameException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -43,8 +44,51 @@ public class Reader {
 
     public static String readString(String message)
     {
-        System.out.println(message);
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        while(true) {
+            try {
+
+
+                System.out.println(message);
+                Scanner scanner = new Scanner(System.in);
+                String text = scanner.nextLine();
+                String numeros = "0123456789";
+                boolean sal = false;
+                boolean encontrado = false;
+                boolean salb = false;
+                int cont = 0;
+                int contb;
+                while (!sal) {
+                    if (cont < text.length()) {
+                        contb = 0;
+                        salb = false;
+                        while (!salb) {
+                            if (contb < numeros.length()) {
+                                if (numeros.charAt(contb) == text.charAt(cont)) {
+                                    encontrado = true;
+                                    salb = true;
+                                    sal = true;
+                                } else {
+                                    contb++;
+                                }
+                            } else {
+                                salb = true;
+                            }
+                        }
+                        if (!encontrado) {
+                            cont++;
+                        }
+                    } else {
+                        sal = true;
+                    }
+                }
+                if (encontrado) {
+                    throw new NumbersInNameException();
+                } else {
+                    return text;
+                }
+            } catch(Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
     }
 }
