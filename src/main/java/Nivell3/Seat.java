@@ -26,11 +26,6 @@ public class Seat {
         return ("Persona - " + personName + " Fila - " + Integer.toString(row) + " Seient - " + Integer.toString(seat));
     }
 
-    public boolean equals(Seat seat)
-    {
-        return this==seat;
-    }
-
     public int getRow()
     {
         return row;
@@ -47,22 +42,14 @@ public class Seat {
     }
 
     @Override
-    public boolean equals(Object o)
-    {
-        Seat obj = (Seat) o;
-        if(this.getSeat()== obj.getSeat() && this.getRow()==obj.getRow())
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Seat seat1 = (Seat) o;
+        return row == seat1.row && seat == seat1.seat;
     }
 
     @Override
-    public int hashCode()
-    {
-        return Objects.hash(row,seat);
+    public int hashCode() {
+        return Objects.hash(row, seat);
     }
 }

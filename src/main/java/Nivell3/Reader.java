@@ -27,6 +27,10 @@ public class Reader {
                         throw new EmptyNumberException();
                     }
                 }
+                else
+                {
+                    return number;
+                }
             }
             catch (InputMismatchException ex)
             {

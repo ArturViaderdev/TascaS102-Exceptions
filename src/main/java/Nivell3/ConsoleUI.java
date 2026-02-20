@@ -20,6 +20,7 @@ public class ConsoleUI {
             switch (opcio) {
                 case 0:
                     sal=true;
+                    break;
                 case 1:
                     showAllReservedSeats();
                     break;
@@ -46,6 +47,7 @@ public class ConsoleUI {
         try
         {
             reserva.cancelAllByPerson(person);
+            System.out.println("Reserva o reserves eliminades.");
         }
         catch(Exception ex)
         {
@@ -61,6 +63,7 @@ public class ConsoleUI {
         try
         {
             reserva.cancelSeat(row,seat);
+            System.out.println("Reserva eliminada.");
         }
         catch(Exception ex)
         {
@@ -77,6 +80,7 @@ public class ConsoleUI {
             reserva.checkValidPosition(row,seat);
             String person = Reader.readString("Introdueix el nom de la persona.");
             reserva.reserveSeat(row,seat,person);
+            System.out.println("Butaca reservada.");
         }
         catch(Exception ex)
         {
@@ -105,11 +109,19 @@ public class ConsoleUI {
 
     private void showAllReservedSeats()
     {
-        List<Seat> seats = reserva.getAllSeats();
-        for(int cont=0;cont<seats.size();cont++)
+        try
         {
-            System.out.println(seats.get(cont).toString());
+            List<Seat> seats = reserva.getAllSeats();
+            for(int cont=0;cont<seats.size();cont++)
+            {
+                System.out.println(seats.get(cont).toString());
+            }
         }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     private static void showMenu()

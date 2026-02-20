@@ -11,6 +11,4 @@ public class Main {
         ConsoleUI consola = new ConsoleUI(reserva);
         consola.start();
     }
-
-
 }

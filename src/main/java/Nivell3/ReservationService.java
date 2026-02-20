@@ -32,18 +32,10 @@ public class ReservationService {
         seats.add(new Seat(row,seat,name));
     }
 
-    public void cancelSeat(int row, int seat) throws Exception
+    public void cancelSeat(int row, int seat)
     {
-        try
-        {
-            int posicio = getPositionSeat(row,seat);
-            seats.remove(posicio);
-        }
-        catch(Exception ex)
-        {
-            System.out.printf(ex.getMessage());
-        }
-
+        int posicio = getPositionSeat(row,seat);
+        seats.remove(posicio);
     }
 
     public void cancelAllByPerson(String name)
@@ -64,7 +56,14 @@ public class ReservationService {
 
     public List<Seat> getAllSeats()
     {
-        return seats;
+        if(seats.size()==0)
+        {
+            throw new NoSeatsReservedException();
+        }
+        else
+        {
+            return seats;
+        }
     }
 
     public List<Seat> getSeatsByPerson(String name)
