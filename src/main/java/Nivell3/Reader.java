@@ -1,6 +1,6 @@
 package Nivell3;
 
-import Nivell3.Exceptions.EmptyNumber;
+import Nivell3.Exceptions.EmptyNumberException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -24,16 +24,23 @@ public class Reader {
                     }
                     else
                     {
-                        throw new EmptyNumber();
+                        throw new EmptyNumberException();
                     }
                 }
             }
             catch (InputMismatchException ex)
             {
                 System.out.println("Entrada incorrecta.");
-            } catch (EmptyNumber e) {
+            } catch (EmptyNumberException e) {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public static String readString(String message)
+    {
+        System.out.println(message);
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 }

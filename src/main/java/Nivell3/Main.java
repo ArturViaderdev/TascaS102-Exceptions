@@ -1,7 +1,5 @@
 package Nivell3;
 
-import Nivell3.Exceptions.EmptyNumber;
-
 public class Main {
     private static int files;
     private static int seients;

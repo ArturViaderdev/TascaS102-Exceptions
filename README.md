@@ -10,3 +10,4 @@ Les runtime exceptions o excepcions no verificades no les detecta el compilador,
 Es demanen al usuari dades per teclat i es comprova que són correctes mitjançat excepcions standard i personalitzades.
 
 ## Nivell 3
+Aplicació per a gestionar les butaques reservades d'un cinema gestionant excepcions.

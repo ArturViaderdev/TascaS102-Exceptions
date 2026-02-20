@@ -1,7 +1,9 @@
 package Nivell3;
 
+import java.util.List;
+
 public class ConsoleUI {
-    ReservationService reserva;
+    private ReservationService reserva;
 
     public ConsoleUI(ReservationService reserva)
     {
@@ -10,27 +12,104 @@ public class ConsoleUI {
 
     public void start()
     {
-        showMenu();
-        int opcio = Reader.readInt("Sel.lecciona una opció.",false);
-        switch (opcio) {
-            case 1:
+        boolean sal = false;
+        while(!sal)
+        {
+            showMenu();
+            int opcio = Reader.readInt("Sel.lecciona una opció.",false);
+            switch (opcio) {
+                case 0:
+                    sal=true;
+                case 1:
+                    showAllReservedSeats();
+                    break;
+                case 2:
+                    showPersonReservedSeats();
+                    break;
+                case 3:
+                    reserveSeat();
+                    break;
+                case 4:
+                    cancelReserve();
+                    break;
+                case 5:
+                    cancelPerson();
+                    break;
+                default:
+                    System.out.println("Opció incorrecta.");}
+        }
+    }
 
-                break;
-            case 2:
+    private void cancelPerson()
+    {
+        String person = Reader.readString("Introdueix el nom de la persona.");
+        try
+        {
+            reserva.cancelAllByPerson(person);
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
 
-                break;
-            case 3:
+    }
 
-                break;
-            case 4:
+    private void cancelReserve()
+    {
+        int row = Reader.readInt("Introdueix la fila.",true);
+        int seat = Reader.readInt("Introdueix la butaca",true);
+        try
+        {
+            reserva.cancelSeat(row,seat);
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
 
-                break;
-            case 5:
+    private void reserveSeat()
+    {
+        int row = Reader.readInt("Introdueix la fila.",true);
+        int seat = Reader.readInt("Introdueix la butaca",true);
+        try
+        {
+            reserva.checkValidPosition(row,seat);
+            String person = Reader.readString("Introdueix el nom de la persona.");
+            reserva.reserveSeat(row,seat,person);
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
 
-                break;
-            default:
-                System.out.println("Opció incorrecta.");}
+    }
 
+    private void showPersonReservedSeats()
+    {
+        String person = Reader.readString("Introdueix el nom de la persona");
+        try
+        {
+            List<Seat> seats = reserva.getSeatsByPerson(person);
+            for(int cont=0;cont<seats.size();cont++)
+            {
+                System.out.println(seats.get(cont).toString());
+            }
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    private void showAllReservedSeats()
+    {
+        List<Seat> seats = reserva.getAllSeats();
+        for(int cont=0;cont<seats.size();cont++)
+        {
+            System.out.println(seats.get(cont).toString());
+        }
     }
 
     private static void showMenu()
