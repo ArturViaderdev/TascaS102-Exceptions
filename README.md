@@ -1,13 +1,12 @@
-# Tasca S1.02 - Exceptions
+# Task S1.02 - Exceptions
+## Level 1:
+I tested the personalized exception that is thrown when the list is empty, and it needs a throws.
+Later, I changed the exception for a runtime exception and the throws is not needed.
 
-## Nivell 1:
-Primer he comprovat la excepció personalitzada que es llança quan la llista està buida i necessita un throws.
-Després, en aquest push, he transformat la excepció en una runtimeexception i no fa falta posar el throws.
+The runtime exceptions or not checked exceptions are not detected by the compiler. It not need the throws and if you not put the try catch the program stops and the error message is shown in the console.
 
-Les runtime exceptions o excepcions no verificades no les detecta el compilador, funcionen de forma que no cal fer el throws i si no es posa try catch s'interromp el codi i es mostra el error al terminal.
+## Level 2 Secure reading from the keyboard
+The program gets data from the user using the keyboard and it checks that the input is correct using standard exceptions and personalized exceptions.
 
-## Nivell 2 Lectura segura des de teclat
-Es demanen al usuari dades per teclat i es comprova que són correctes mitjançat excepcions standard i personalitzades.
-
-## Nivell 3
-Aplicació per a gestionar les butaques reservades d'un cinema gestionant excepcions.
+## Level 3
+Application that administrates the reserved seats of a cinema managing exceptions.
