@@ -1,4 +1,4 @@
-package Nivell3;
+package level3;
 
 import java.util.Objects;
 

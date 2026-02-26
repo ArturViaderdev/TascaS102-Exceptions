@@ -1,7 +1,7 @@
-package Nivell3;
+package level3;
 
-import Nivell3.Exceptions.EmptyNumberException;
-import Nivell3.Exceptions.NumbersInNameException;
+import level3.exceptions.EmptyNumberException;
+import level3.exceptions.NumbersInNameException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

@@ -1,6 +1,6 @@
-package Nivell3;
+package level3;
 
-import Nivell3.Exceptions.*;
+import level3.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,18 +40,28 @@ public class ReservationService {
 
     public void cancelAllByPerson(String name)
     {
+        if(seats.isEmpty())
+        {
+            throw new NoSeatsReservedException();
+        }
         int cont=0;
+        int contpersons=0;
         while(cont<seats.size())
         {
             if(seats.get(cont).getPersonName().equals(name))
             {
                 seats.remove(cont);
+                contpersons++;
             }
             else
             {
                 cont++;
             }
         }
+       if(contpersons==0)
+       {
+           throw new NoSeatsReservedException();
+       }
     }
 
     public List<Seat> getAllSeats()

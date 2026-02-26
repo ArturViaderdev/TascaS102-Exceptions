@@ -1,9 +1,9 @@
-package Nivell2;
+package level2;
 
-import Nivell2.Exceptions.MiniumLengthException;
-import Nivell2.Exceptions.NoSymbolsException;
-import Nivell2.Exceptions.NotOneCharException;
-import Nivell2.Exceptions.NotSOrNException;
+import level2.exceptions.MiniumLengthException;
+import level2.exceptions.NoSymbolsException;
+import level2.exceptions.NotOneCharException;
+import level2.exceptions.NotSOrNException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -93,7 +93,7 @@ public class ConsoleReader {
                 String cadena = scanner.nextLine();
                 if(cadena.length()!=1)
                 {
-                    throw new NotOneCharException();
+                    throw new NotOneCharException("Has introduit més o menys de 1 caracter.");
                 }
                 else
                 {
@@ -124,12 +124,12 @@ public class ConsoleReader {
                     }
                     else
                     {
-                        throw new NoSymbolsException();
+                        throw new NoSymbolsException("Només pots posar lletres i números, no posis símbols.");
                     }
                 }
                 else
                 {
-                   throw new MiniumLengthException();
+                   throw new MiniumLengthException("Has de posar mínim 4 caracters.");
                 }
             }
             catch(MiniumLengthException exception)
@@ -185,7 +185,7 @@ public class ConsoleReader {
                 String cadena = scanner.nextLine();
                 if(cadena.length()!=1)
                 {
-                    throw new NotOneCharException();
+                    throw new NotOneCharException("Has introduit més o menys de 1 caracter.");
                 }
                 else
                 {
@@ -199,7 +199,7 @@ public class ConsoleReader {
                     }
                     else
                     {
-                        throw new NotSOrNException();
+                        throw new NotSOrNException("\"No has introduit s o n");
                     }
                 }
             }

@@ -1,4 +1,6 @@
-package Nivell1;
+package level1;
+
+import level1.exceptions.EmptySaleException;
 
 public class Main {
     public static void main(String[] args)
@@ -8,21 +10,20 @@ public class Main {
        {
             sale.calculateTotal();
        }
-        catch(Exception ex) //Excepció genèrica
+        catch(EmptySaleException ex)
         {
             System.out.println(ex.getMessage());
         }
         Product product = new Product("Producte",10.0);
         sale.addProduct(product);
+        sale.calculateTotal();
         try
         {
-            sale.calculateTotal();
+            sale.getInexistentPosition();
         }
         catch(IndexOutOfBoundsException ex)
         {
-            System.out.println("S'ha intentat accedir a un element inexistent");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println(ex.getMessage());
         }
     }
 }

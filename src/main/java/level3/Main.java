@@ -1,4 +1,4 @@
-package Nivell3;
+package level3;
 
 public class Main {
     private static int files;

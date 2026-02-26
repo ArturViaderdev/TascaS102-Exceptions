@@ -1,4 +1,4 @@
-package Nivell3.Exceptions;
+package level3.exceptions;
 
 public class NoSeatsReservedException extends RuntimeException{
     public NoSeatsReservedException(){
