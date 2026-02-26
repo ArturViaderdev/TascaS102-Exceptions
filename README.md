@@ -38,13 +38,11 @@ The project is structured in three levels of increasing complexity.
                 │   ├── InvalidSeatException.java
                 │   ├── NoSeatsReservedException.java
                 │   ├── NumbersInNameException.java
-                │   ├── SeatAlreadyEmptyException.java
                 │   └── SeatFreeException.java
                 ├── Main.java
                 ├── Reader.java
                 ├── ReservationService.java
                 └── Seat.java
-
 ````
 
 ## 🚀 Instal.lation and Execution
