@@ -1,5 +1,7 @@
 package level3;
 
+import level3.exceptions.InvalidSeatException;
+
 import java.util.List;
 
 public class ConsoleUI {
@@ -82,11 +84,10 @@ public class ConsoleUI {
             reserva.reserveSeat(row,seat,person);
             System.out.println("Butaca reservada.");
         }
-        catch(Exception ex)
+        catch(InvalidSeatException ex)
         {
             System.out.println(ex.getMessage());
         }
-
     }
 
     private void showPersonReservedSeats()

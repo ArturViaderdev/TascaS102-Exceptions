@@ -7,6 +7,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Reader {
+    private static final Scanner scanner = new Scanner(System.in);
     public static int readInt(String message, boolean testzero)
     {
         int number;
@@ -15,7 +16,6 @@ public class Reader {
             try
             {
                 System.out.println(message);
-                Scanner scanner = new Scanner(System.in);
                 number = scanner.nextInt();
                 if(testzero)
                 {
@@ -25,7 +25,7 @@ public class Reader {
                     }
                     else
                     {
-                        throw new EmptyNumberException();
+                        throw new EmptyNumberException("Has introduit un nombre menor que 1 i no pot esser.");
                     }
                 }
                 else
@@ -39,6 +39,9 @@ public class Reader {
             } catch (EmptyNumberException e) {
                 System.out.println(e.getMessage());
             }
+            finally {
+                scanner.nextLine();
+            }
         }
     }
 
@@ -46,10 +49,7 @@ public class Reader {
     {
         while(true) {
             try {
-
-
                 System.out.println(message);
-                Scanner scanner = new Scanner(System.in);
                 String text = scanner.nextLine();
                 String numeros = "0123456789";
                 boolean sal = false;
@@ -82,7 +82,7 @@ public class Reader {
                     }
                 }
                 if (encontrado) {
-                    throw new NumbersInNameException();
+                    throw new NumbersInNameException("Has posat números al nom. Error.");
                 } else {
                     return text;
                 }

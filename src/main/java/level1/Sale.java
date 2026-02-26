@@ -23,7 +23,6 @@ public class Sale {
     {
         if(productList.isEmpty())
         {
-            setTotalPrice(0.0);
             throw new EmptySaleException("The shopping cart is empty.");
         }
 
@@ -48,6 +47,7 @@ public class Sale {
     public Sale()
     {
         productList = new ArrayList<Product>();
+        setTotalPrice(0.0);
     }
 
     public void addProduct(Product producte)

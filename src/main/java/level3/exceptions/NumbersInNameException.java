@@ -1,8 +1,8 @@
 package level3.exceptions;
 
 public class NumbersInNameException extends RuntimeException{
-    public NumbersInNameException()
+    public NumbersInNameException(String message)
     {
-        super("Has posat números al nom. Error.");
+        super(message);
     }
 }

@@ -42,7 +42,7 @@ public class ReservationService {
     {
         if(seats.isEmpty())
         {
-            throw new NoSeatsReservedException();
+            throw new NoSeatsReservedException("No hi ha butaques reservades.");
         }
         int cont=0;
         int contpersons=0;
@@ -60,7 +60,7 @@ public class ReservationService {
         }
        if(contpersons==0)
        {
-           throw new NoSeatsReservedException();
+           throw new NoSeatsReservedException("No hi ha butaques reservades per a aquesta persona.");
        }
     }
 
@@ -68,7 +68,7 @@ public class ReservationService {
     {
         if(seats.size()==0)
         {
-            throw new NoSeatsReservedException();
+            throw new NoSeatsReservedException("No hi ha butaques reservades.");
         }
         else
         {
@@ -91,7 +91,7 @@ public class ReservationService {
         }
         if(contperson==0)
         {
-            throw new InvalidPersonNameException();
+            throw new InvalidPersonNameException("No es troba la persona al cinema.");
         }
         return seatsperson;
     }
@@ -100,7 +100,7 @@ public class ReservationService {
     {
         if(!(row>=0 && row<=totalRows && seat>=0 && seat<=seatsPerRow))
         {
-            throw new InvalidSeatException();
+            throw new InvalidSeatException("Posició fora de rang.");
         }
     }
 
@@ -132,7 +132,7 @@ public class ReservationService {
         }
         if(encontrado)
         {
-            throw new AlreadyTakenException();
+            throw new AlreadyTakenException("Seient ja reservat amb anterioritat");
         }
     }
 
@@ -169,7 +169,7 @@ public class ReservationService {
         }
         else
         {
-            throw new SeatFreeException();
+            throw new SeatFreeException("La butaca està lliure.");
         }
     }
 }

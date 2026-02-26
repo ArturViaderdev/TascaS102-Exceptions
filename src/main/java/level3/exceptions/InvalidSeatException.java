@@ -1,8 +1,8 @@
 package level3.exceptions;
 
 public class InvalidSeatException extends RuntimeException{
-    public InvalidSeatException()
+    public InvalidSeatException(String message)
     {
-        super("Posició fora de rang.");
+        super(message);
     }
 }

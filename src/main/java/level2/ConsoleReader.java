@@ -9,20 +9,26 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleReader {
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static byte readByte(String message)
     {
-        byte interruptor;
         while(true)
         {
+            System.out.println(message);
             try
             {
-                System.out.println(message);
-                Scanner scanner = new Scanner(System.in);
-                interruptor = scanner.nextByte();
+                byte interruptor = scanner.nextByte();
                 return interruptor;
             }
             catch (InputMismatchException ex) {
                 System.out.println("Entrada incorrecta.");
+                scanner.nextLine();
+
+            }
+            finally
+            {
+                scanner.nextLine();
             }
         }
     }
@@ -32,16 +38,20 @@ public class ConsoleReader {
         int number;
         while(true)
         {
+            System.out.println(message);
             try
             {
-                System.out.println(message);
-                Scanner scanner = new Scanner(System.in);
                 number = scanner.nextInt();
                 return number;
             }
             catch (InputMismatchException ex)
             {
                 System.out.println("Entrada incorrecta.");
+
+            }
+            finally
+            {
+                scanner.nextLine();
             }
         }
     }
@@ -51,16 +61,20 @@ public class ConsoleReader {
         float number;
         while(true)
         {
+            System.out.println(message);
             try
             {
-                System.out.println(message);
-                Scanner scanner = new Scanner(System.in);
                 number = scanner.nextFloat();
                 return number;
             }
             catch (InputMismatchException ex)
             {
                 System.out.println("Entrada incorrecta.");
+
+            }
+            finally
+            {
+                scanner.nextLine();
             }
         }
     }
@@ -69,16 +83,20 @@ public class ConsoleReader {
         double number;
         while(true)
         {
+            System.out.println(message);
             try
             {
-                System.out.println(message);
-                Scanner scanner = new Scanner(System.in);
                 number = scanner.nextDouble();
                 return number;
             }
             catch (InputMismatchException ex)
             {
                 System.out.println("Entrada incorrecta.");
+
+            }
+            finally
+            {
+                scanner.nextLine();
             }
         }
     }
@@ -86,23 +104,18 @@ public class ConsoleReader {
     public static char readChar(String message) {
         while(true)
         {
-            try
-            {
-                System.out.println(message);
-                Scanner scanner = new Scanner(System.in);
-                String cadena = scanner.nextLine();
-                if(cadena.length()!=1)
-                {
-                    throw new NotOneCharException("Has introduit més o menys de 1 caracter.");
-                }
-                else
-                {
+            System.out.println(message);
+            String cadena = scanner.nextLine();
+            try {
+                if (cadena.length() == 1) {
                     return cadena.charAt(0);
+                } else {
+                    throw new NotOneCharException("La entrada no te un caracter.");
                 }
             }
-            catch(NotOneCharException exception)
+            catch(NotOneCharException ex)
             {
-                System.out.println(exception.getMessage());
+                System.out.println(ex.getMessage());
             }
         }
     }
@@ -111,11 +124,10 @@ public class ConsoleReader {
     {
         while(true)
         {
+            System.out.println(message);
+            String cadena = scanner.nextLine();
             try
             {
-                System.out.println(message);
-                Scanner scanner = new Scanner(System.in);
-                String cadena = scanner.nextLine();
                 if(cadena.length()>=4)
                 {
                     if(!therearesymbols(cadena))
@@ -178,11 +190,10 @@ public class ConsoleReader {
     {
         while(true)
         {
+            System.out.println(message);
+            String cadena = scanner.nextLine();
             try
             {
-                System.out.println(message);
-                Scanner scanner = new Scanner(System.in);
-                String cadena = scanner.nextLine();
                 if(cadena.length()!=1)
                 {
                     throw new NotOneCharException("Has introduit més o menys de 1 caracter.");
@@ -199,14 +210,11 @@ public class ConsoleReader {
                     }
                     else
                     {
-                        throw new NotSOrNException("\"No has introduit s o n");
+                        throw new NotSOrNException("No has introduit s o n");
                     }
                 }
             }
-            catch(NotOneCharException exception)
-            {
-                System.out.println(exception.getMessage());
-            } catch (NotSOrNException exception) {
+            catch(NotOneCharException | NotSOrNException exception){
                 System.out.println(exception.getMessage());
             }
         }

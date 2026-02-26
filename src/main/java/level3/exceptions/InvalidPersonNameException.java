@@ -1,8 +1,8 @@
 package level3.exceptions;
 
 public class InvalidPersonNameException extends RuntimeException{
-    public InvalidPersonNameException()
+    public InvalidPersonNameException(String message)
     {
-        super("No es troba la persona al cinema.");
+        super(message);
     }
 }

@@ -1,8 +1,8 @@
 package level3.exceptions;
 
 public class AlreadyTakenException extends RuntimeException{
-    public AlreadyTakenException()
+    public AlreadyTakenException(String message)
     {
-        super("Seient ja reservat amb anterioritat");
+        super(message);
     }
 }
