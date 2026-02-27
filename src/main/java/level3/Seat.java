@@ -26,16 +26,6 @@ public class Seat {
         return ("Persona - " + personName + " Fila - " + Integer.toString(row) + " Seient - " + Integer.toString(seat));
     }
 
-    public int getRow()
-    {
-        return row;
-    }
-
-    public int getSeat()
-    {
-        return seat;
-    }
-
     public String getPersonName()
     {
         return personName;

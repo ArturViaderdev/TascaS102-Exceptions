@@ -36,7 +36,6 @@ public class Sale {
 
 
         System.out.println("El total és de: " + getTotalPrice().toString());
-        //Obtenim un producte inexistent perque faci error
     }
 
     public void getInexistentPosition()

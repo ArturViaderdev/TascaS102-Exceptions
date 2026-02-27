@@ -52,36 +52,36 @@ public class Reader {
                 System.out.println(message);
                 String text = scanner.nextLine();
                 String numeros = "0123456789";
-                boolean sal = false;
-                boolean encontrado = false;
-                boolean salb = false;
+                boolean exit = false;
+                boolean found = false;
+                boolean exitB = false;
                 int cont = 0;
-                int contb;
-                while (!sal) {
+                int contB;
+                while (!exit) {
                     if (cont < text.length()) {
-                        contb = 0;
-                        salb = false;
-                        while (!salb) {
-                            if (contb < numeros.length()) {
-                                if (numeros.charAt(contb) == text.charAt(cont)) {
-                                    encontrado = true;
-                                    salb = true;
-                                    sal = true;
+                        contB = 0;
+                        exitB = false;
+                        while (!exitB) {
+                            if (contB < numeros.length()) {
+                                if (numeros.charAt(contB) == text.charAt(cont)) {
+                                    found = true;
+                                    exitB = true;
+                                    exit = true;
                                 } else {
-                                    contb++;
+                                    contB++;
                                 }
                             } else {
-                                salb = true;
+                                exitB = true;
                             }
                         }
-                        if (!encontrado) {
+                        if (!found) {
                             cont++;
                         }
                     } else {
-                        sal = true;
+                        exit = true;
                     }
                 }
-                if (encontrado) {
+                if (found) {
                     throw new NumbersInNameException("Has posat números al nom. Error.");
                 } else {
                     return text;

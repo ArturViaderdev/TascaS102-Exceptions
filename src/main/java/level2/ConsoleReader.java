@@ -18,8 +18,8 @@ public class ConsoleReader {
             System.out.println(message);
             try
             {
-                byte interruptor = scanner.nextByte();
-                return interruptor;
+                byte oneByte = scanner.nextByte();
+                return oneByte;
             }
             catch (InputMismatchException ex) {
                 System.out.println("Entrada incorrecta.");
@@ -110,7 +110,7 @@ public class ConsoleReader {
                 if (cadena.length() == 1) {
                     return cadena.charAt(0);
                 } else {
-                    throw new NotOneCharException("La entrada no te un caracter.");
+                    throw new NotOneCharException("La entrada no te un caràcter.");
                 }
             }
             catch(NotOneCharException ex)
@@ -130,7 +130,7 @@ public class ConsoleReader {
             {
                 if(cadena.length()>=4)
                 {
-                    if(!therearesymbols(cadena))
+                    if(!thereAreSymbols(cadena))
                     {
                         return cadena;
                     }
@@ -141,49 +141,45 @@ public class ConsoleReader {
                 }
                 else
                 {
-                   throw new MiniumLengthException("Has de posar mínim 4 caracters.");
+                   throw new MiniumLengthException("Has de posar mínim 4 caràcters.");
                 }
             }
-            catch(MiniumLengthException exception)
-            {
-                System.out.println(exception.getMessage());
-            }
-            catch(NoSymbolsException exception)
+            catch(MiniumLengthException | NoSymbolsException exception)
             {
                 System.out.println(exception.getMessage());
             }
         }
     }
 
-    private static boolean therearesymbols(String cadena)
+    private static boolean thereAreSymbols(String cadena)
     {
         String letters ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         int conta=0;
 
-        boolean sal = false;
-        boolean encontrado = false;
-        while(!sal)
+        boolean exit = false;
+        boolean found = false;
+        while(!exit)
         {
             if(conta<cadena.length())
             {
-                String letra = "";
-                letra = letra + cadena.charAt(conta);
-                if(letters.contains(letra))
+                String character = "";
+                character = character + cadena.charAt(conta);
+                if(letters.contains(character))
                 {
                     conta++;
                 }
                 else
                 {
-                    encontrado = true;
-                    sal = true;
+                    found = true;
+                    exit = true;
                 }
             }
             else
             {
-                sal=true;
+                exit=true;
             }
         }
-        return encontrado;
+        return found;
     }
 
     public static boolean readYesNo(String message)
@@ -196,7 +192,7 @@ public class ConsoleReader {
             {
                 if(cadena.length()!=1)
                 {
-                    throw new NotOneCharException("Has introduit més o menys de 1 caracter.");
+                    throw new NotOneCharException("Has introduït més o menys de 1 caràcter.");
                 }
                 else
                 {
@@ -210,7 +206,7 @@ public class ConsoleReader {
                     }
                     else
                     {
-                        throw new NotSOrNException("No has introduit s o n");
+                        throw new NotSOrNException("No has introduït s o n");
                     }
                 }
             }
