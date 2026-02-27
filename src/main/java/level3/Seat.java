@@ -3,8 +3,8 @@ package level3;
 import java.util.Objects;
 
 public class Seat {
-    private int row;
-    private int seat;
+    private final int row;
+    private final int seat;
     private String personName;
 
     public Seat(int row, int seat, String personName)

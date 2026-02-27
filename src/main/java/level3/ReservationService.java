@@ -6,25 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationService {
-    private int totalRows;
-    private int seatsPerRow;
-    private List<Seat> seats;
+    private final int totalRows;
+    private final int seatsPerRow;
+    private final List<Seat> seats;
 
     public ReservationService(int seatsPerRow, int totalRows)
     {
         seats = new ArrayList<>();
         this.seatsPerRow = seatsPerRow;
         this.totalRows = totalRows;
-    }
-
-    public int getSeatsPerRow()
-    {
-       return seatsPerRow;
-    }
-
-    public int getTotalRowss()
-    {
-        return totalRows;
     }
 
     public void reserveSeat(int row, int seat, String name){
@@ -45,20 +35,20 @@ public class ReservationService {
             throw new NoSeatsReservedException("No hi ha butaques reservades.");
         }
         int cont=0;
-        int contpersons=0;
+        int contPersons=0;
         while(cont<seats.size())
         {
             if(seats.get(cont).getPersonName().equals(name))
             {
                 seats.remove(cont);
-                contpersons++;
+                contPersons++;
             }
             else
             {
                 cont++;
             }
         }
-       if(contpersons==0)
+       if(contPersons==0)
        {
            throw new NoSeatsReservedException("No hi ha butaques reservades per a aquesta persona.");
        }
@@ -66,7 +56,7 @@ public class ReservationService {
 
     public List<Seat> getAllSeats()
     {
-        if(seats.size()==0)
+        if(seats.isEmpty())
         {
             throw new NoSeatsReservedException("No hi ha butaques reservades.");
         }
@@ -78,22 +68,21 @@ public class ReservationService {
 
     public List<Seat> getSeatsByPerson(String name)
     {
-        int cont=0;
-        List<Seat> seatsperson = new ArrayList<>();
-        int contperson = 0;
+        int cont, contPerson = 0;
+        List<Seat> seatsPerson = new ArrayList<>();
         for(cont=0;cont<seats.size();cont++)
         {
             if(seats.get(cont).getPersonName().equals(name))
             {
-                seatsperson.add(seats.get(cont));
-                contperson++;
+                seatsPerson.add(seats.get(cont));
+                contPerson++;
             }
         }
-        if(contperson==0)
+        if(contPerson==0)
         {
             throw new InvalidPersonNameException("No es troba la persona al cinema.");
         }
-        return seatsperson;
+        return seatsPerson;
     }
 
     public void checkValidPosition(int row, int seat)
@@ -105,20 +94,20 @@ public class ReservationService {
     }
 
     private void validateSeatPosition(int row,int seat) {
-        boolean sal = false;
-        boolean encontrado = false;
+        boolean exit = false;
+        boolean found = false;
         int cont =0;
         checkValidPosition(row,seat);
-        System.out.println("Posicio vàlida");
+        System.out.println("Posició vàlida");
         Seat seatValidate = new Seat(row,seat);
-        while(!sal)
+        while(!exit)
         {
             if(cont<seats.size())
             {
                 if(seatValidate.equals(seats.get(cont)))
                 {
-                    encontrado = true;
-                    sal = true;
+                    found = true;
+                    exit = true;
                 }
                 else
                 {
@@ -127,31 +116,31 @@ public class ReservationService {
             }
             else
             {
-                sal = true;
+                exit = true;
             }
         }
-        if(encontrado)
+        if(found)
         {
             throw new AlreadyTakenException("Seient ja reservat amb anterioritat");
         }
     }
 
     private int getPositionSeat(int row, int seat){
-        boolean sal = false;
-        boolean encontrado = false;
+        boolean exit = false;
+        boolean found = false;
         int cont = 0;
         checkValidPosition(row,seat);
-        System.out.println("Posicio vàlida");
+        System.out.println("Posició vàlida");
         Seat seatValidate = new Seat(row,seat);
 
-        while(!sal)
+        while(!exit)
         {
             if(cont<seats.size())
             {
                 if(seatValidate.equals(seats.get(cont)))
                 {
-                    encontrado = true;
-                    sal = true;
+                    found = true;
+                    exit = true;
                 }
                 else
                 {
@@ -160,10 +149,10 @@ public class ReservationService {
             }
             else
             {
-                sal = true;
+                exit = true;
             }
         }
-        if(encontrado)
+        if(found)
         {
             return cont;
         }
