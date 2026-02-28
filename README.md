@@ -49,6 +49,7 @@ The project is structured in three levels of increasing complexity.
 1. Clone the repository:
 ````bash
 git clone https://github.com/ArturViaderdev/TascaS102-Exceptions
+cd TascaS102-Exceptions
 ````
 You can do cd into the project folder you want to execute.
 The projects are inside src/main/java.
