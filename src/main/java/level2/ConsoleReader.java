@@ -1,6 +1,6 @@
 package level2;
 
-import level2.exceptions.MiniumLengthException;
+import level2.exceptions.MinimumLengthException;
 import level2.exceptions.NoSymbolsException;
 import level2.exceptions.NotOneCharException;
 import level2.exceptions.NotSOrNException;
@@ -26,11 +26,12 @@ public class ConsoleReader {
                 scanner.nextLine();
 
             }
-            finally
-            {
-                scanner.nextLine();
-            }
         }
+    }
+
+    public static void spendNextLine()
+    {
+        scanner.nextLine();
     }
 
     public static int readInt(String message)
@@ -47,10 +48,6 @@ public class ConsoleReader {
             catch (InputMismatchException ex)
             {
                 System.out.println("Entrada incorrecta.");
-
-            }
-            finally
-            {
                 scanner.nextLine();
             }
         }
@@ -70,11 +67,8 @@ public class ConsoleReader {
             catch (InputMismatchException ex)
             {
                 System.out.println("Entrada incorrecta.");
-
-            }
-            finally
-            {
                 scanner.nextLine();
+
             }
         }
     }
@@ -92,10 +86,6 @@ public class ConsoleReader {
             catch (InputMismatchException ex)
             {
                 System.out.println("Entrada incorrecta.");
-
-            }
-            finally
-            {
                 scanner.nextLine();
             }
         }
@@ -141,45 +131,29 @@ public class ConsoleReader {
                 }
                 else
                 {
-                   throw new MiniumLengthException("Has de posar mínim 4 caràcters.");
+                   throw new MinimumLengthException("Has de posar mínim 4 caràcters.");
                 }
             }
-            catch(MiniumLengthException | NoSymbolsException exception)
+            catch(MinimumLengthException | NoSymbolsException exception)
             {
                 System.out.println(exception.getMessage());
             }
         }
     }
 
+
+
     private static boolean thereAreSymbols(String cadena)
     {
-        String letters ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        int conta=0;
-
-        boolean exit = false;
-        boolean found = false;
-        while(!exit)
+        boolean foundSymbol = false;
+        for(int count=0;count<cadena.length();count++)
         {
-            if(conta<cadena.length())
-            {
-                String character = "";
-                character = character + cadena.charAt(conta);
-                if(letters.contains(character))
-                {
-                    conta++;
-                }
-                else
-                {
-                    found = true;
-                    exit = true;
-                }
-            }
-            else
-            {
-                exit=true;
+            if(!(Character.isLetterOrDigit(cadena.charAt(count)))) {
+                foundSymbol = true;
+                break;
             }
         }
-        return found;
+        return foundSymbol;
     }
 
     public static boolean readYesNo(String message)

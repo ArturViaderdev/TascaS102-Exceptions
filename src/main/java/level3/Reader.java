@@ -36,13 +36,16 @@ public class Reader {
             catch (InputMismatchException ex)
             {
                 System.out.println("Entrada incorrecta.");
+                scanner.nextLine();
             } catch (EmptyNumberException e) {
                 System.out.println(e.getMessage());
             }
-            finally {
-                scanner.nextLine();
-            }
         }
+    }
+
+    public static void spendNextLine()
+    {
+        scanner.nextLine();
     }
 
     public static String readString(String message)

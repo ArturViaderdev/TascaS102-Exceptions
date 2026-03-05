@@ -33,9 +33,6 @@ public class Sale {
         }
 
         setTotalPrice(total);
-
-
-        System.out.println("El total és de: " + getTotalPrice().toString());
     }
 
     public void getInexistentPosition()

@@ -11,6 +11,7 @@ public class Main {
         System.out.println("Has introduït " + Float.toString(numberFloat));
         double numberDouble = ConsoleReader.readDouble("Introdueix un nombre amb decimals double.");
         System.out.println("Has introduït " + Double.toString(numberDouble));
+        ConsoleReader.spendNextLine();
         char caracter = ConsoleReader.readChar("Introdueix un caràcter:");
         System.out.println("Has introduït " + caracter);
         String word = ConsoleReader.readString("Introdueix una paraula de mínim 4 lletres sense símbols.");

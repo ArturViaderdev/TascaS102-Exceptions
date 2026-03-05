@@ -65,13 +65,14 @@ java Main.java
 ````
 
 ## Level 1:
-I tested the personalized exception that is thrown when the list is empty, and it needs a throws.
-Later, I changed the exception for a runtime exception and the throws is not needed.
+I tested the custom exception that is thrown when the list is empty, and it requires a throws declaration.
+Later, I replaced it with a runtime exception, which does not require throws.
 
-The runtime exceptions or not checked exceptions are not detected by the compiler. It not need the throws and if you not put the try catch the program stops and the error message is shown in the console.
+Runtime (or unchecked) exceptions are not detected by the compiler. They don’t need the throws keyword, and if you don’t use a try-catch block, the program stops and the error message is displayed in the console.
 
 ## Level 2 Secure reading from the keyboard
-The program gets data from the user using the keyboard and it checks that the input is correct using standard exceptions and personalized exceptions.
+
+The program reads input from the user via the keyboard and validates it using both standard and custom exceptions.
 
 ## Level 3
-Application that administrates the reserved seats of a cinema managing exceptions.
+Application that manages cinema seat reservations while handling exceptions appropriately.

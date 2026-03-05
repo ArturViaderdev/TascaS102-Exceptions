@@ -18,14 +18,28 @@ public class ReservationService {
     }
 
     public void reserveSeat(int row, int seat, String name){
-        validateSeatPosition(row,seat);
-        seats.add(new Seat(row,seat,name));
+        if (getPositionSeat(row,seat) == -1)
+        {
+            seats.add(new Seat(row,seat,name));
+        }
+        else
+        {
+            throw new AlreadyTakenException("El seient ja ha estat reservat amb anterioritat.");
+        }
     }
 
     public void cancelSeat(int row, int seat)
     {
-        int posicio = getPositionSeat(row,seat);
-        seats.remove(posicio);
+        int position = getPositionSeat(row,seat);
+        if(position!=-1)
+        {
+            seats.remove(position);
+        }
+        else
+        {
+            throw new SeatFreeException("La butaca no està reservada.");
+        }
+
     }
 
     public void cancelAllByPerson(String name)
@@ -34,21 +48,21 @@ public class ReservationService {
         {
             throw new NoSeatsReservedException("No hi ha butaques reservades.");
         }
-        int cont=0;
-        int contPersons=0;
-        while(cont<seats.size())
+        int count=0;
+        int countPersons=0;
+        while(count<seats.size())
         {
-            if(seats.get(cont).getPersonName().equals(name))
+            if(seats.get(count).getPersonName().equals(name))
             {
-                seats.remove(cont);
-                contPersons++;
+                seats.remove(count);
+                countPersons++;
             }
             else
             {
-                cont++;
+                count++;
             }
         }
-       if(contPersons==0)
+       if(countPersons==0)
        {
            throw new NoSeatsReservedException("No hi ha butaques reservades per a aquesta persona.");
        }
@@ -68,17 +82,17 @@ public class ReservationService {
 
     public List<Seat> getSeatsByPerson(String name)
     {
-        int cont, contPerson = 0;
+        int count, countPerson = 0;
         List<Seat> seatsPerson = new ArrayList<>();
-        for(cont=0;cont<seats.size();cont++)
+        for(count=0;count<seats.size();count++)
         {
-            if(seats.get(cont).getPersonName().equals(name))
+            if(seats.get(count).getPersonName().equals(name))
             {
-                seatsPerson.add(seats.get(cont));
-                contPerson++;
+                seatsPerson.add(seats.get(count));
+                countPerson++;
             }
         }
-        if(contPerson==0)
+        if(countPerson==0)
         {
             throw new InvalidPersonNameException("No es troba la persona al cinema.");
         }
@@ -93,72 +107,30 @@ public class ReservationService {
         }
     }
 
-    private void validateSeatPosition(int row,int seat) {
-        boolean exit = false;
-        boolean found = false;
-        int cont =0;
-        checkValidPosition(row,seat);
-        System.out.println("Posició vàlida");
-        Seat seatValidate = new Seat(row,seat);
-        while(!exit)
-        {
-            if(cont<seats.size())
-            {
-                if(seatValidate.equals(seats.get(cont)))
-                {
-                    found = true;
-                    exit = true;
-                }
-                else
-                {
-                    cont++;
-                }
-            }
-            else
-            {
-                exit = true;
-            }
-        }
-        if(found)
-        {
-            throw new AlreadyTakenException("Seient ja reservat amb anterioritat");
-        }
-    }
-
     private int getPositionSeat(int row, int seat){
-        boolean exit = false;
-        boolean found = false;
-        int cont = 0;
+        boolean found=false;
         checkValidPosition(row,seat);
-        System.out.println("Posició vàlida");
         Seat seatValidate = new Seat(row,seat);
-
-        while(!exit)
+        int count;
+        for(count = 0;count<seats.size();count++)
         {
-            if(cont<seats.size())
+            if(seatValidate.equals(seats.get(count)))
             {
-                if(seatValidate.equals(seats.get(cont)))
-                {
-                    found = true;
-                    exit = true;
-                }
-                else
-                {
-                    cont++;
-                }
+                found=true;
+                break;
             }
             else
             {
-                exit = true;
+                count++;
             }
         }
         if(found)
         {
-            return cont;
+           return count;
         }
         else
         {
-            throw new SeatFreeException("La butaca està lliure.");
+            return -1;
         }
     }
 }

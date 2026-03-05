@@ -17,6 +17,8 @@ public class Main {
         Product product = new Product("Producte",10.0);
         sale.addProduct(product);
         sale.calculateTotal();
+        double totalPrice = sale.getTotalPrice();
+        System.out.println("El total és de: " + Double.toString(totalPrice));
         try
         {
             sale.getInexistentPosition();

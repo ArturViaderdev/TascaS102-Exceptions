@@ -1,6 +1,6 @@
 package level3;
 
-import level3.exceptions.InvalidSeatException;
+import level3.exceptions.*;
 
 import java.util.List;
 
@@ -45,17 +45,15 @@ public class ConsoleUI {
 
     private void cancelPerson()
     {
+        Reader.spendNextLine();
         String person = Reader.readString("Introdueix el nom de la persona.");
         try
         {
             reserva.cancelAllByPerson(person);
             System.out.println("Reserva o reserves eliminades.");
+        } catch (NoSeatsReservedException e) {
+            System.out.println(e.getMessage());
         }
-        catch(Exception ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-
     }
 
     private void cancelReserve()
@@ -67,7 +65,7 @@ public class ConsoleUI {
             reserva.cancelSeat(row,seat);
             System.out.println("Reserva eliminada.");
         }
-        catch(Exception ex)
+        catch(SeatFreeException | InvalidSeatException ex)
         {
             System.out.println(ex.getMessage());
         }
@@ -80,11 +78,12 @@ public class ConsoleUI {
         try
         {
             reserva.checkValidPosition(row,seat);
+            Reader.spendNextLine();
             String person = Reader.readString("Introdueix el nom de la persona.");
             reserva.reserveSeat(row,seat,person);
             System.out.println("Butaca reservada.");
         }
-        catch(InvalidSeatException ex)
+        catch(InvalidSeatException | AlreadyTakenException ex)
         {
             System.out.println(ex.getMessage());
         }
@@ -92,6 +91,7 @@ public class ConsoleUI {
 
     private void showPersonReservedSeats()
     {
+        Reader.spendNextLine();
         String person = Reader.readString("Introdueix el nom de la persona");
         try
         {
@@ -101,7 +101,7 @@ public class ConsoleUI {
                 System.out.println(seats.get(cont).toString());
             }
         }
-        catch(Exception ex)
+        catch(InvalidPersonNameException ex)
         {
             System.out.println(ex.getMessage());
         }
@@ -118,7 +118,7 @@ public class ConsoleUI {
                 System.out.println(seats.get(cont).toString());
             }
         }
-        catch(Exception ex)
+        catch(NoSeatsReservedException ex)
         {
             System.out.println(ex.getMessage());
         }
